@@ -31,7 +31,7 @@ Evaluation occurs after removing const, volatile, reference.
 template < typename T >
 using inherit_from_smart_ptr = decltype( inherit_from_smart_ptr_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
 ```
-```inherit_from_smart_ptr<T>::value```/```inherit_from_smart_ptr_v<T>``` is ```true``` if ```T``` is based on ```std::shared_ptr``` or ```std::unique_ptr```.
+```inherit_from_smart_ptr<T>::value```/```inherit_from_smart_ptr_v<T>``` is ```true``` if ```T``` is derived from ```std::shared_ptr``` or ```std::unique_ptr```.
 
 Evaluation occurs after removing const, volatile, reference.
 
@@ -40,7 +40,7 @@ Evaluation occurs after removing const, volatile, reference.
 template < typename T >
 using inherit_from_shared_ptr = decltype( inherit_from_shared_ptr_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
 ```
-```inherit_from_shared_ptr<T>::value```/```inherit_from_shared_ptr_v<T>``` is ```true``` if ```T``` is based on ```std::shared_ptr```.
+```inherit_from_shared_ptr<T>::value```/```inherit_from_shared_ptr_v<T>``` is ```true``` if ```T``` is derived from ```std::shared_ptr```.
 
 Evaluation occurs after removing const, volatile, reference.
 
@@ -49,7 +49,7 @@ Evaluation occurs after removing const, volatile, reference.
 template < typename T >
 using inherit_from_unique_ptr = decltype( inherit_from_unique_ptr_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
 ```
-```inherit_from_unique_ptr<T>::value```/```inherit_from_unique_ptr_v<T>``` is ```true``` if ```T``` is based on ```std::unique_ptr```.
+```inherit_from_unique_ptr<T>::value```/```inherit_from_unique_ptr_v<T>``` is ```true``` if ```T``` is derived from ```std::unique_ptr```.
 
 Evaluation occurs after removing const, volatile, reference.
 
