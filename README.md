@@ -53,6 +53,9 @@ using inherit_from_unique_ptr = decltype( inherit_from_unique_ptr_impl( std::dec
 
 Evaluation occurs after removing const, volatile, reference.
 
+# example
+![Smart Pointer Type Trait](https://user-images.githubusercontent.com/73771162/146510184-589f642d-3451-4a41-976b-d09cb144b2c9.PNG)
+  
 ## reference
 
 [Concept for Smart Pointers](https://stackoverflow.com/questions/65752626/concept-for-smart-pointers)
