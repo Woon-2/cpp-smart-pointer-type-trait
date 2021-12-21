@@ -1,8 +1,9 @@
 // ==========================================================================
-// type traits for smart pointers.
-// supporting is_unique_ptr< T >, is_shared_ptr< T >, is_smart_ptr< T >, is_ptr< T >
-// usage is like std::is_pointer< T >.
-// 
+// Type Traits for smart pointers
+// Supporting is_unique_ptr< T >, is_shared_ptr< T >, is_smart_ptr< T >, is_ptr< T >
+// Usage is like std::is_pointer< T >.
+// Soft version type traits additionally evalute a derived class from a pointer as true.
+// Just write "soft" after a type_trait to embrace inheritance.
 // ==========================================================================
 
 #ifndef _smart_pointer_type_trait
