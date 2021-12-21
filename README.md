@@ -84,7 +84,7 @@ using is_unique_ptr_soft = decltype( is_unique_ptr_soft_impl( std::declval< std:
 ![Smart Pointer Type Trait2](https://user-images.githubusercontent.com/73771162/146931121-43c0be51-8a52-4f49-a87f-b00562bacd1f.PNG)
 
   
-## reference
+# Reference
 
 [Concept for Smart Pointers](https://stackoverflow.com/questions/65752626/concept-for-smart-pointers)
 
