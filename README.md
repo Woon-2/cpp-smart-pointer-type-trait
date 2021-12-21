@@ -6,7 +6,7 @@ You can easily compile your code diffrently depending on which pointer-type is u
 You can find inheritance and you won't have trouble with const, volatile keywords.  
 
 Type traits are generally used for static assertions and static polymorphism. (C++ 17 if constexpr)  
-However, the standard library's type traits do not support smart pointers, and do not support inheritance.  
+However, the standard library's type traits do not support smart pointers, and do not find inheritance.  
 This is why smart pointer type traits made.
 
 # Release Note
