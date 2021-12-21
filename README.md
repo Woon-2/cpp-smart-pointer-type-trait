@@ -1,60 +1,87 @@
 # SmartPointerTypeTrait
-C++ Type Traits for Smart Pointer
+A simple, header-only cpp library implementing smart pointer type traits. 
+You can easily compile your code diffrently depending on which pointer-type is used.  
+You can find inheritance and you won't have trouble with const, volatile keywords.  
+Type traits are generally used for static assertions and static polymorphism.(C++ 17 if constexpr)  
+However, the standard library's type traits do not support smart pointers, and do not support inheritance.  
+This is why smart pointer type traits made.
+
+# Release Note
+version 1.0 released.
 
 
-## is_a_pointer
-* is_smart_pointer<T>
+# Installation
+All you need to to is copy over the smart_pointer_type_trait.hpp header file.  
+include it in your solution, and you are good to go.
+
+
+# Guide
+All evaluations occurs after removing const, volatile, reference.
+
+## Hard Type Traits
+* is_ptr<T>
 ```c++
-template < typename T > struct is_smart_ptr : is_smart_ptr_impl< std::remove_cv_t< std::remove_reference_t< T > > > {};
+template < typename T >
+struct is_ptr : is_ptr_impl< std::remove_cv_t< std::remove_reference_t< T > > > {};
+```
+```is_ptr<T>::value```/```is_ptr_v<T>``` is ```true``` if ```T``` is ```std::shared_ptr``` or ```std::unique_ptr``` or a raw pointer.
+
+* is_smart_ptr<T>
+```c++
+template < typename T >
+struct is_smart_ptr : is_smart_ptr_impl< std::remove_cv_t< std::remove_reference_t< T > > > {};
 ```
 ```is_smart_ptr<T>::value```/```is_smart_ptr_v<T>``` is ```true``` if ```T``` is ```std::shared_ptr``` or ```std::unique_ptr```.
 
-Evaluation occurs after removing const, volatile, reference.
+
 * is_shared_ptr<T>
 ```c++
-template < typename T > struct is_shared_ptr : is_shared_ptr_impl< std::remove_cv_t< std::remove_reference_t< T > > > {};
+template < typename T >
+struct is_shared_ptr : is_shared_ptr_impl< std::remove_cv_t< std::remove_reference_t< T > > > {};
 ```
 ```is_shared_ptr<T>::value```/```is_shared_ptr_v<T>``` is ```true``` if ```T``` is ```std::shared_ptr```.
 
-Evaluation occurs after removing const, volatile, reference.
 * is_unique_ptr<T>
 ```c++
-template < typename T > struct is_unique_ptr : is_unique_ptr_impl< std::remove_cv_t< std::remove_reference_t< T > > > {};
+template < typename T >
+struct is_unique_ptr : is_unique_ptr_impl< std::remove_cv_t< std::remove_reference_t< T > > > {};
 ```
 ```is_unique_ptr<T>::value```/```is_unique_ptr_v<T>``` is ```true``` if ```T``` is ```std::unique_ptr```.
 
-Evaluation occurs after removing const, volatile, reference.
 
-## inherit_from_a_pointer
-* inherit_from_smart_pointer<T>
+## Soft Type Traits
+* is_ptr_soft<T>
 ```c++
 template < typename T >
-using inherit_from_smart_ptr = decltype( inherit_from_smart_ptr_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
+using is_ptr_soft = decltype( is_ptr_soft_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
 ```
-```inherit_from_smart_ptr<T>::value```/```inherit_from_smart_ptr_v<T>``` is ```true``` if ```T``` is derived from ```std::shared_ptr``` or ```std::unique_ptr```.
-
-Evaluation occurs after removing const, volatile, reference.
-
-* inherit_from_shared_pointer<T>
+```is_ptr_soft<T>::value```/```is_ptr_soft_v<T>``` is ```true``` if ```T``` is derived from ```std::shared_ptr``` or ```std::unique_ptr``` or is a raw pointer.
+  
+* is_smart_ptr_soft<T>
 ```c++
 template < typename T >
-using inherit_from_shared_ptr = decltype( inherit_from_shared_ptr_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
+using is_smart_ptr_soft = decltype( is_smart_ptr_soft_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
 ```
-```inherit_from_shared_ptr<T>::value```/```inherit_from_shared_ptr_v<T>``` is ```true``` if ```T``` is derived from ```std::shared_ptr```.
+```is_smart_ptr_soft<T>::value```/```is_smart_ptr_soft_v<T>``` is ```true``` if ```T``` is derived from ```std::shared_ptr``` or ```std::unique_ptr```.
 
-Evaluation occurs after removing const, volatile, reference.
-
-* inherit_from_unique_pointer<T>
+* is_shared_ptr_soft<T>
 ```c++
 template < typename T >
-using inherit_from_unique_ptr = decltype( inherit_from_unique_ptr_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
+using is_shared_ptr_soft = decltype( is_shared_ptr_soft_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
 ```
-```inherit_from_unique_ptr<T>::value```/```inherit_from_unique_ptr_v<T>``` is ```true``` if ```T``` is derived from ```std::unique_ptr```.
+```is_shared_ptr_soft<T>::value```/```is_shared_ptr_soft_v<T>``` is ```true``` if ```T``` is derived from ```std::shared_ptr```.
 
-Evaluation occurs after removing const, volatile, reference.
+* is_unique_ptr_soft<T>
+```c++
+template < typename T >
+using is_unique_ptr_soft = decltype( is_unique_ptr_soft_impl( std::declval< std::remove_cv_t< std::remove_reference_t< T > >* >() ) );
+```
+```is_unique_ptr_soft<T>::value```/```is_unique_ptr_soft_v<T>``` is ```true``` if ```T``` is derived from ```std::unique_ptr```.
 
 # example
-![Smart Pointer Type Trait](https://user-images.githubusercontent.com/73771162/146510184-589f642d-3451-4a41-976b-d09cb144b2c9.PNG)
+![Smart Pointer Type Trait1](https://user-images.githubusercontent.com/73771162/146930931-ff47a89d-86ab-402c-a558-fccd9670edc3.PNG)
+![Smart Pointer Type Trait2](https://user-images.githubusercontent.com/73771162/146931121-43c0be51-8a52-4f49-a87f-b00562bacd1f.PNG)
+
   
 ## reference
 
