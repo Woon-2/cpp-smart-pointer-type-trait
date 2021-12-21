@@ -7,7 +7,7 @@ You can find inheritance and you won't have trouble with const, volatile keyword
 
 Type traits are generally used for static assertions and static polymorphism. (C++ 17 if constexpr)  
 However, the standard library's type traits do not support smart pointers, and do not find inheritance.  
-This is why smart pointer type traits made.
+This is why smart pointer type traits are made.
 
 # Release Note
 version 1.0 released.
