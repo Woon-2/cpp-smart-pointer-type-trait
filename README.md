@@ -80,7 +80,7 @@ using is_unique_ptr_soft = decltype( is_unique_ptr_soft_impl( std::declval< std:
 ```
 ```is_unique_ptr_soft<T>::value```/```is_unique_ptr_soft_v<T>``` is ```true``` if ```T``` is derived from ```std::unique_ptr```.
 
-# example
+# Example
 ![Smart Pointer Type Trait1](https://user-images.githubusercontent.com/73771162/146930931-ff47a89d-86ab-402c-a558-fccd9670edc3.PNG)
 ![Smart Pointer Type Trait2](https://user-images.githubusercontent.com/73771162/146931121-43c0be51-8a52-4f49-a87f-b00562bacd1f.PNG)
 
