@@ -1,4 +1,4 @@
-# 🎈Smart Pointer Type Trait🎈  
+# Smart Pointer Type Trait🎈  
 A simple, header-only cpp library implementing smart pointer type traits.  
 You can easily compile your code diffrently depending on which pointer-type is used.  
 You can find inheritance and you won't have trouble with const, volatile keywords.  
