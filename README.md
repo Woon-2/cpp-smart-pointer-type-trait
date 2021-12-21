@@ -8,6 +8,7 @@ This is why smart pointer type traits made.
 
 # Release Note
 version 1.0 released.
+> https://github.com/MyeongWoonJang/cpp-smart-pointer-type-trait/releases/tag/release
 
 
 # Installation
