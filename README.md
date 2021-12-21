@@ -1,4 +1,6 @@
 # Smart Pointer Type Trait🎈  
+<img src="https://img.shields.io/badge/Launguage-C%2B%2B-green?link=https://isocpp.org/"/>  <img src="https://img.shields.io/badge/C%2B%2B-14%2C%2017-blue?link=https://en.wikipedia.org/wiki/C%2B%2B17"/>  <img src="https://img.shields.io/badge/Build-success-brightgreen?link=https://github.com/MyeongWoonJang/cpp-smart-pointer-type-trait/releases/tag/release"/>
+
 A simple, header-only cpp library implementing smart pointer type traits.  
 You can easily compile your code diffrently depending on which pointer-type is used.  
 You can find inheritance and you won't have trouble with const, volatile keywords.  
