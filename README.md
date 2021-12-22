@@ -24,7 +24,7 @@ Include it in your solution, and you are good to go.
 
 # Guide
 All evaluations occurs after removing const, volatile, reference.  
-Implementation is in namespace woon2.  
+Implementations are in namespace woon2.  
 ```c++
 #include "smart_pointer_type_trait.hpp"		// include the header file.
 
@@ -39,7 +39,7 @@ Implementation is in namespace woon2.
 ```
 
 ## Hard Type Traits
-* is_pointable<T>
+* is_pointable
 ```c++
 template < typename T >
 using is_pointable = detail::is_pointable_impl< detail::remove_cvr_t< T > >;
@@ -47,7 +47,7 @@ using is_pointable = detail::is_pointable_impl< detail::remove_cvr_t< T > >;
 ```is_ptr<T>::value```/```is_ptr_v<T>``` is ```true``` if ```T``` has ```operator*``` and ```operator->```.  
 detects all pointable classes such as ```std::unique_ptr<T>```, ```std::shared_ptr<T>```, ```T*```.
 
-* is_smart_ptr<T>
+* is_smart_ptr
 ```c++
 template < typename T >
 using is_smart_ptr = std::conditional_t<
@@ -63,14 +63,14 @@ using is_smart_ptr = std::conditional_t<
 ```is_smart_ptr<T>::value```/```is_smart_ptr_v<T>``` is ```true``` if ```T``` is ```std::shared_ptr``` or ```std::unique_ptr```.
 
 
-* is_shared_ptr<T>
+* is_shared_ptr
 ```c++
 template < typename T >
 using is_shared_ptr = detail::is_shared_ptr_impl< detail::remove_cvr_t< T > >;
 ```
 ```is_shared_ptr<T>::value```/```is_shared_ptr_v<T>``` is ```true``` if ```T``` is ```std::shared_ptr```.
 
-* is_unique_ptr<T>
+* is_unique_ptr
 ```c++
 template < typename T >
 using is_unique_ptr = detail::is_unique_ptr_impl< detail::remove_cvr_t< T > >;
@@ -79,14 +79,14 @@ using is_unique_ptr = detail::is_unique_ptr_impl< detail::remove_cvr_t< T > >;
 
 
 ## Soft Type Traits
-* is_smart_ptr_soft<T>
+* is_smart_ptr_soft
 ```c++
 template < typename T >
 using is_smart_ptr_soft = decltype( detail::is_smart_ptr_soft_impl( std::declval< detail::remove_cvr_t< T >* >() ) );
 ```
 ```is_smart_ptr_soft<T>::value```/```is_smart_ptr_soft_v<T>``` is ```true``` if ```T``` is derived from ```std::shared_ptr``` or ```std::unique_ptr```.
 
-* is_shared_ptr_soft<T>
+* is_shared_ptr_soft
 ```c++
 template < typename T >
 using is_shared_ptr_soft = decltype( detail::is_shared_ptr_soft_impl( std::declval< detail::remove_cvr_t< T >* >() ) );
@@ -99,10 +99,42 @@ template < typename T >
 using is_unique_ptr_soft = decltype( detail::is_unique_ptr_soft_impl( std::declval< detail::remove_cvr_t< T >* >() ) );
 ```
 ```is_unique_ptr_soft<T>::value```/```is_unique_ptr_soft_v<T>``` is ```true``` if ```T``` is derived from ```std::unique_ptr```.
+	
+## Member Detections
+* has_reset
+```c++
+template < typename T >
+using has_reset = detail::has_reset_impl< detail::remove_cvr_t< T > >;	
+```
+``` has_reset<T>::value```/```has_reset_v<T>``` is ```true``` if ```T``` has ```reset()``` as a member.
+	
+* has_release
+```c++
+template < typename T >
+using has_release = detail::has_release_impl< detail::remove_cvr_t< T > >;	
+```
+``` has_release<T>::value```/```has_release_v<T>``` is ```true``` if ```T``` has ```release()``` as a member.
+	
+* has_get_deleter
+```c++
+template < typename T >
+using has_get_deleter = detail::has_get_deleter_impl< detail::remove_cvr_t< T > >;	
+```
+``` has_get_deleter<T>::value```/```has_get_deleter_v<T>``` is ```true``` if ```T``` has ```get_deleter()``` as a member.
+	
+* has_swap
+```c++
+template < typename T >
+using has_swap = detail::has_swap_impl< detail::remove_cvr_t< T > >;	
+```
+``` has_swap<T>::value```/```has_swap_v<T>``` is ```true``` if ```T``` has ```swap(detail::remove_cvr_t<T>&)``` as a member.  
+(```detail::remove_cvr_t<T>&``` is a l-value reference of the pointer.)
 
 # Example
 ![Smart Pointer Type Trait1](https://user-images.githubusercontent.com/73771162/147122310-58b2a730-2e5e-4f7f-a734-0f690dedfdea.PNG)
 ![Smart Pointer Type Trait2](https://user-images.githubusercontent.com/73771162/147122315-176ae870-1687-4681-840e-a6493a2bb584.PNG)
+
+examples of using member detections are on other examples. (example2, example3)
   
 # Contributing
   we are welcoming your contributions!😊
