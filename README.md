@@ -1,5 +1,5 @@
 # Smart Pointer Type Trait🎈  
-<a href="https://isocpp.org/"><img src="https://img.shields.io/badge/Launguage-C%2B%2B-green"/></a>  <a href="https://en.wikipedia.org/wiki/C%2B%2B17"><img src="https://img.shields.io/badge/C%2B%2B-14%2C%2017-blue"/></a>  <a href="https://github.com/MyeongWoonJang/cpp-smart-pointer-type-trait/releases/tag/release"><img src="https://img.shields.io/badge/Build-success-brightgreen"/></a>
+<a href="https://isocpp.org/"><img src="https://img.shields.io/badge/Launguage-C%2B%2B-green"/></a>  <a href="https://en.wikipedia.org/wiki/C%2B%2B17"><img src="https://img.shields.io/badge/C%2B%2B-14%2C%2017-blue"/></a>  <a href="https://github.com/MyeongWoonJang/cpp-smart-pointer-type-trait/releases/tag/release"><img src="https://img.shields.io/badge/build-passing-brightgreen"/></a>
 
 A simple, header-only cpp library implementing smart pointer type traits.  
 You can easily compile your code diffrently depending on which pointer-type is used.  
