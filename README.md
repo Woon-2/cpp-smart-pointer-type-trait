@@ -10,8 +10,11 @@ However, the standard library's type traits do not support smart pointers, and d
 This is why smart pointer type traits are made.
 
 # Release Note
-Version 1.0 released.
-> https://github.com/MyeongWoonJang/cpp-smart-pointer-type-trait/releases/tag/release
+Version 2.0 released.
+> https://github.com/MyeongWoonJang/cpp-smart-pointer-type-trait/releases/tag/v2.0
+
+
+If you are looking for old versions, visit [here](https://github.com/MyeongWoonJang/cpp-smart-pointer-type-trait/releases).
 
 
 # Installation
@@ -100,14 +103,13 @@ using is_unique_ptr_soft = decltype( detail::is_unique_ptr_soft_impl( std::declv
 # Example
 ![Smart Pointer Type Trait1](https://user-images.githubusercontent.com/73771162/147122310-58b2a730-2e5e-4f7f-a734-0f690dedfdea.PNG)
 ![Smart Pointer Type Trait2](https://user-images.githubusercontent.com/73771162/147122315-176ae870-1687-4681-840e-a6493a2bb584.PNG)
+  
+# Contributing
+  we are welcoming your contributions!😊
 
 
 # Credit
   ### **Woon2**
-  
-# Contributing
-  we are welcoming your contributions!😊
-  
   
 # Reference
 [How to write a type trait is container or is vector](https://stackoverflow.com/questions/12042824/how-to-write-a-type-trait-is-container-or-is-vector) - stackoverflow
