@@ -3,7 +3,7 @@
 // Supporting is_unique_ptr< T >, is_shared_ptr< T >, is_smart_ptr< T >, is_ptr< T >
 // Usage is like std::is_pointer< T >.
 // Soft version type traits additionally evalute a derived class from a pointer as true.
-// Just write "soft" after a type_trait to embrace inheritance.
+// Just write "soft" after a type_trait to detect inheritance too.
 // ==========================================================================
 
 #ifndef _smart_pointer_type_trait
@@ -154,6 +154,7 @@ namespace woon2
 	// method trait ( trace if a pointer class has a specified method. ) =====================
 	namespace detail
 	{
+		// has_reset detail ==================================================================
 		template < typename T, typename _ = void >
 		struct has_reset_impl : std::false_type {};
 
@@ -169,7 +170,9 @@ namespace woon2
 			void
 			>
 		> : std::true_type {};
+		// has_reset detail end ==============================================================
 
+		// has_release detail ================================================================
 		template < typename T, typename _ = void >
 		struct has_release_impl : std::false_type {};
 
@@ -185,7 +188,9 @@ namespace woon2
 			void
 			>
 		> : std::true_type {};
+		// has_release detail end ============================================================
 
+		// has_get_deleter detail ============================================================
 		template < typename T, typename _ = void >
 		struct has_get_deleter_impl : std::false_type {};
 		
@@ -202,7 +207,9 @@ namespace woon2
 			void
 			>
 		> : std::true_type {};
+		// has_get_deleter detail end=========================================================
 
+		// has_swap detail ===================================================================
 		template < typename T, typename _ = void >
 		struct has_swap_impl : std::false_type {};
 
@@ -218,7 +225,8 @@ namespace woon2
 			void
 			>
 		> : std::true_type {};
-	}
+		// has_swap detail end ===============================================================
+	} // detail
 
 	template < typename T >
 	using has_reset = detail::has_reset_impl< detail::remove_cvr_t< T > >;
