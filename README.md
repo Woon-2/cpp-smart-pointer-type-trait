@@ -22,7 +22,18 @@ Include it in your solution, and you are good to go.
 # Guide
 All evaluations occurs after removing const, volatile, reference.  
 Implementation is in namespace woon2.  
-(Use like woon2::is_smart_ptr<T>, or write using namespace woon2; in your code.)
+```c++
+#include "smart_pointer_type_trait.hpp"		// include the header file.
+
+// ...
+
+	woon2::is_smart_ptr_v<T>;		// usage guide 1
+
+	using namespace woon2;			// usage guide 2
+	is_smart_ptr_v<T>;
+
+// ...
+```
 
 ## Hard Type Traits
 * is_pointable<T>
