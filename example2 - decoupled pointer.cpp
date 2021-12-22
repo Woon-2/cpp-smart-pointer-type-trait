@@ -1,5 +1,5 @@
 // ==========================================================================
-// Implementation: easily changable pointer for code decoupling
+// Implementation: easily changable dynamic allocation policy.
 // Just retype the pointer type in line 93.
 // ==========================================================================
 
@@ -13,9 +13,13 @@ decltype( auto ) get_raw_pointer( Ptr&& ptr )
 	else return ptr.operator->();
 }
 
+// ======================================================================
 // a wrapper class of a pointer, for safe compilation.
-// if the wrapped class doesn't have required method, it does nothing.
-// you can get the original pointer type by using unwrapped ( pointer_impl< Ty, Ptr >::unwrapped ).
+// if the wrapped class doesn't have the required method,
+// try to behave like the expected behavior from the name.
+// if it fails, it eventually does nothing. ( or static assertion fails. )
+// you can get the original pointer type by using unwrapped ( pointer< Ty >::unwrapped ).
+// ======================================================================
 template < typename Ty, typename Ptr >
 class pointer_impl
 {
@@ -75,7 +79,7 @@ public:
 	const Ty& operator*() const noexcept { return *impl; }
 	Ty* operator->() noexcept { return get_raw_pointer( impl ); }
 	const Ty* operator->() const noexcept { return get_raw_pointer( impl ); }
-	operator bool() const noexcept { return static_cast< bool >( get_raw_pointer( impl ) ); }
+	operator bool() const noexcept { return static_cast<bool>( get_raw_pointer( impl ) ); }
 
 	// special member functions
 	pointer_impl( Ty* impl = nullptr ) : impl{ impl } {}
@@ -83,18 +87,19 @@ public:
 private:
 	Ptr impl;
 };
+// pointer_impl end =====================================================
 
-// ======================================================
-// ******************************************************
+// ======================================================================
+// **********************************************************************
 // Decoupling by using keyword.
 // Memory allocation policy has the only dependancy on this code.
-// ======================================================
+// ======================================================================
 template < typename Ty >
 using pointer = pointer_impl< Ty, std::unique_ptr< Ty > >;		// can change to diffrent pointer
 																// if you add more pointer class,
 																// you can also change to the pointer class.
-// ******************************************************
-// ======================================================
+// **********************************************************************
+// ======================================================================
 
 template < typename Ty, typename ... Args >
 auto make( Args&& ... args )
@@ -142,11 +147,11 @@ int main()
 	std::cout << "get_deleter() call =====================\n";
 	std::cout << typeid( a.get_deleter() ).name() << '\n';
 	std::cout << "========================================\n\n\n";
-	
+
 	std::cout << "print value ============================\n";
 	std::cout << "value: " << *a << '\n';
 	std::cout << "========================================\n\n\n";
-	
+
 	std::cout << "must call constructor and destructor ===\n";
 	a.reset( new INT{ 5 } );
 	std::cout << "========================================\n\n\n";
