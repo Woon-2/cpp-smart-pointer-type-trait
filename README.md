@@ -3,7 +3,7 @@
 
 A simple, header-only cpp library implementing smart pointer type traits.  
 You can easily compile your code diffrently depending on which pointer-type is used.  
-You can detect inheritance too and you won't have trouble with const, volatile qualifiers.
+You can detect inheritance too and you won't have trouble with const, volatile qualifiers.  
 It also contains member detections. (SFINAE based)
 
 Type traits are generally used for static assertions and static polymorphism. (C++ 17 if constexpr)  
